@@ -4,7 +4,8 @@
   "scripts": {
     "d": "next dev --turbopack",
     "b": "next build",
-    "p": "next start"
+    "p": "next start",
+    "f": "prettier . -l --write"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
@@ -20,9 +21,10 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.6",
-    "@types/node": "^20.17.17",
+    "@types/node": "^20.17.18",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "prettier": "^3.5.1",
     "tailwindcss": "^4.0.6",
     "typescript": "^5.7.3"
   }
