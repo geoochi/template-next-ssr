@@ -5,6 +5,7 @@
     "d": "next dev --turbopack",
     "b": "next build",
     "p": "next start",
+    "p-static": "pnpx serve out",
     "f": "prettier . -l --write"
   },
   "dependencies": {
