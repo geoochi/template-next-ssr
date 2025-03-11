@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body className={`antialiased`}>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          {children}
+          <div className='flex flex-col h-screen items-center justify-center gap-4'>{children}</div>
         </ThemeProvider>
       </body>
     </html>
