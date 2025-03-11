@@ -14,7 +14,7 @@ const Home: React.FC = () => {
       <Button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} variant='ghost' size='icon'>
         {theme === 'light' ? <SunIcon /> : <MoonIcon />}
       </Button>
-      <Link href='/about'>→ About Page</Link>
+      <Link href='./about'>→ About Page</Link>
     </>
   )
 }

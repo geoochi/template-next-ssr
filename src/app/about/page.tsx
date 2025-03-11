@@ -4,7 +4,7 @@ const About: React.FC = () => {
   return (
     <>
       <p className='text-4xl'>About Page</p>
-      <Link href='/'>← Home Page</Link>
+      <Link href='./'>← Home Page</Link>
     </>
   )
 }
