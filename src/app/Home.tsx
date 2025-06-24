@@ -1,9 +1,8 @@
 'use client'
-
-import { useTheme } from 'next-themes'
-import { Button } from '@/components/ui/button'
-import { SunIcon, MoonIcon } from 'lucide-react'
 import Link from 'next/link'
+import { SunIcon, MoonIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import useTheme from '@/hooks/use-theme'
 
 const Home: React.FC = () => {
   const { theme, setTheme } = useTheme()
