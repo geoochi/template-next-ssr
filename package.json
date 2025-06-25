@@ -1,6 +1,5 @@
 {
   "type": "module",
-  "packageManager": "pnpm@10.12.0",
   "scripts": {
     "d": "next dev --turbopack",
     "b": "next build --no-lint",
