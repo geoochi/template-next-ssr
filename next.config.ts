@@ -1,7 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    PRIVATE_KEY: process.env.PRIVATE_KEY,
+  },
 }
 
 export default nextConfig
