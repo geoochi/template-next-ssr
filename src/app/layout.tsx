@@ -13,9 +13,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div className='flex flex-col h-screen items-center justify-center gap-4'>
-          {children}
-        </div>
+        <div className='flex flex-col h-screen items-center justify-center gap-4'>{children}</div>
       </body>
     </html>
   )
