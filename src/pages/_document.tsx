@@ -5,16 +5,11 @@ export default function Document() {
     <Html lang='en'>
       <Head>
         <title>template-nextV15-shadcnVcanary-tailwindcssV4</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              ;(function () {
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                  document.documentElement.classList.add('dark')
-                }
-              })()
-            `,
+            __html:
+              ";(function () {if (window.matchMedia('(prefers-color-scheme: dark)').matches) {document.documentElement.classList.add('dark')}})()",
           }}
         />
       </Head>
