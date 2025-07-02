@@ -1,10 +1,11 @@
 {
   "type": "module",
   "scripts": {
-    "d": "next dev --turbopack",
-    "b": "next build --no-lint",
+    "d": "bun sitemap && next dev --turbopack",
+    "b": "bun sitemap && next build --no-lint",
+    "p": "bunx http-server out -a localhost -p 5173",
     "start": "next start",
-    "p": "bunx http-server out -a localhost -p 5173"
+    "sitemap": "bun scripts/generate-sitemap.js --minify"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
