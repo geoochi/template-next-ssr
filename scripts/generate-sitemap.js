@@ -33,38 +33,29 @@ function getPages(dir, basePath = '') {
 }
 
 // 生成sitemap XML
-function generateSitemap(pages, baseUrl, minify = false) {
+function generateSitemap(pages, baseUrl) {
   const urls = pages
     .map(page => {
       // 清理路径，移除可能的点号
       const cleanPage = page.replace(/^\.\/?/, '').replace(/\/\.$/, '')
       const url = cleanPage === '' ? `${baseUrl}/` : `${baseUrl}/${cleanPage}`
 
-      if (minify) {
-        return `<url><loc>${url}</loc><lastmod>${new Date().toISOString()}</lastmod><changefreq>weekly</changefreq><priority>${
-          cleanPage === '' ? '1.0' : '0.8'
-        }</priority></url>`
-      } else {
-        return `
-      <url>
-        <loc>${url}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>${cleanPage === '' ? '1.0' : '0.8'}</priority>
-      </url>`
-      }
+      return `<url><loc>${url}</loc><lastmod>${new Date().toISOString()}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`
     })
-    .join(minify ? '' : '\n')
+    .join('')
 
-  if (minify) {
-    return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`
-  } else {
-    return `
-  <?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls}
-  </urlset>`
-  }
+  return (
+    '<?xml version="1.0" encoding="UTF-8"?>' +
+    '<urlset' +
+    ' xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' +
+    ' xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"' +
+    ' xmlns:xhtml="http://www.w3.org/1999/xhtml"'+
+    ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'+
+    ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"'+
+    '>' +
+    `${urls}` +
+    '</urlset>'
+  )
 }
 
 // 主函数
@@ -72,22 +63,19 @@ function main() {
   const pagesDir = path.join(__dirname, '../src/pages')
   const baseUrl = 'https://geoochi.site'
 
-  // 检查是否有 --minify 参数
-  const minify = process.argv.includes('--minify')
-
   if (!fs.existsSync(pagesDir)) {
     console.error('Pages directory not found!')
     process.exit(1)
   }
 
   const pages = getPages(pagesDir)
-  const sitemap = generateSitemap(pages, baseUrl, minify)
+  const sitemap = generateSitemap(pages, baseUrl)
 
   // 写入public目录
   const outputPath = path.join(__dirname, '../public/sitemap.xml')
   fs.writeFileSync(outputPath, sitemap)
 
-  console.log(`✅ Sitemap generated with ${pages.length} pages:${minify ? ' (minified)' : ''}`)
+  console.log(`✅ Sitemap generated with ${pages.length} pages:`)
   pages.forEach(page => {
     // 清理路径，移除可能的点号
     const cleanPage = page.replace(/^\.\/?/, '').replace(/\/\.$/, '')
