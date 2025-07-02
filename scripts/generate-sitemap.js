@@ -61,7 +61,15 @@ function generateSitemap(pages, baseUrl) {
 // 主函数
 function main() {
   const pagesDir = path.join(__dirname, '../src/pages')
-  const baseUrl = 'https://geoochi.site'
+  
+  // 从命令行参数获取 baseUrl
+  const baseUrl = process.argv[2]
+  
+  if (!baseUrl) {
+    console.error('❌ 请提供 baseUrl 参数')
+    console.error('用法: node generate-sitemap.js <baseUrl>')
+    process.exit(1)
+  }
 
   if (!fs.existsSync(pagesDir)) {
     console.error('Pages directory not found!')

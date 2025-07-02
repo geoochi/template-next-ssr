@@ -5,7 +5,7 @@
     "b": "bun sitemap && next build --no-lint",
     "p": "bunx http-server out -a localhost -p 5173",
     "start": "next start",
-    "sitemap": "bun scripts/generate-sitemap.js"
+    "sitemap": "bun scripts/generate-sitemap.js https://template-next-ssr.geoochi.com"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
