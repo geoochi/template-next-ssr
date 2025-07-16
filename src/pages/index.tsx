@@ -1,10 +1,15 @@
 import Home from '@/components/Home'
 
-const Index: React.FC = () => {
+export async function getServerSideProps() {
+  const hasPrivateKey = !!process.env.PRIVATE_KEY
+  return { props: { hasPrivateKey } }
+}
+
+const Index: React.FC<{ hasPrivateKey: boolean }> = ({ hasPrivateKey }) => {
   return (
     <>
-      <Home></Home>
-      <p>PRIVATE_KEY: {process.env.PRIVATE_KEY || 'Not found'}</p>
+      <Home />
+      <p>PRIVATE_KEY: {hasPrivateKey ? 'OK' : 'Not found'}</p>
     </>
   )
 }
